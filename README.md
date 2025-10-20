@@ -1,44 +1,44 @@
-# Projeto 6 — Data Analytics e Engenharia de Dados com SQL
+# Projeto 6 — Regressão Polinomial: Previsão de Valor de Aluguel
 
 ---
 
 ## 📚 Explicação do Curso
-Este projeto foi desenvolvido como parte do curso de Cientista de Dados da EBAC, consolidando o uso de **SQL (Structured Query Language)** para a construção de bases de análise e preparando dados para ferramentas de Business Intelligence. O objetivo central é demonstrar a capacidade de transformar dados brutos em uma base analítica coesa.
+Este projeto foi desenvolvido como parte do **MÓDULO 34 - Regressão: Conceitos Avançados** do curso de Cientista de Dados da EBAC. O objetivo central é aplicar e consolidar o conhecimento em modelos de regressão avançada, focando especificamente na **Regressão Polinomial** para previsão de aluguel.
 
 ---
 
 ## 🎯 Objetivos
-O principal objetivo deste projeto é a prática e consolidação da proficiência em SQL como ferramenta de Engenharia de Dados:
+O principal objetivo deste projeto é a prática e consolidação da proficiência em modelos de Regressão Polinomial:
 
-* **Praticar SQL em Profundidade:** Utilizar comandos avançados de SQL, como o `LEFT JOIN`, `GROUP BY` e funções de agregação.
-* **Junção de Dados:** Realizar a junção (`JOIN`) de múltiplas tabelas para criar uma base de dados única e unificada para análise.
-* **Extração de Métricas:** Extrair métricas de negócio essenciais (como Top Clientes e Volume de Compras) diretamente do banco de dados.
-* **Entrega para BI:** Geração de um *dataset* final pronto para consumo em ferramentas de Business Intelligence (BI), como Looker Studio ou Power BI.
+* **Seleção de Variável:** Escolher uma variável preditora alternativa à `Valor Condominio` (usada em aula) para prever o `Valor_Aluguel`.
+* **Transformação de Dados:** Aplicar a transformação `PolynomialFeatures` com `degree = 2` para criar variáveis não lineares.
+* **Modelagem:** Separar os dados em treino e teste e realizar o treinamento do modelo de `LinearRegression` no conjunto transformado.
+* **Avaliação de Performance:** Fazer previsões, avaliar os resultados obtidos e plotar o gráfico da regressão ajustada.
 
 ---
 
 ## 💻 Tecnologias Usadas
-* **Linguagem:** SQL (SQLite)
-* **Bibliotecas de Suporte:** Python, Pandas
-* **Ambiente:** Jupyter Notebook
-* **Destino da Análise:** Business Intelligence (BI) tools.
+* **Linguagem:** Python
+* **Manipulação de Dados:** Pandas, NumPy
+* **Modelagem:** Scikit-learn (`LinearRegression`, `PolynomialFeatures`, `train_test_split`)
+* **Avaliação e Visualização:** Matplotlib, `r2_score`
 
 ---
 
 ## 📈 Principais Análises Realizadas
-O projeto focou nas seguintes etapas de preparação e análise de dados via SQL:
+O projeto focou nas seguintes etapas de processamento e modelagem:
 
-* **Unificação de Dados:** Criação de consultas para unificar dados que estavam dispersos, utilizando o `LEFT JOIN` para garantir a visão completa da base, incluindo aqueles que ainda não realizaram transações.
-* **Cálculos Agregados:** Cálculo do valor total gasto e da quantidade de compras por cliente.
-* **Identificação de Perfil:** Identificação e ordenação dos clientes mais ativos (Top N em compras) usando `ORDER BY` e `LIMIT`.
-* **Exportação:** Geração de um arquivo CSV final otimizado para o processo de *data-pipeline* e análise em dashboards.
+* **Carregamento e Separação:** A base de dados `ALUGUEL_MOD12.csv` foi carregada, e a variável **`Metragem`** foi selecionada como a variável preditora (X).
+* **Feature Engineering:** A `Metragem` foi processada utilizando o **`PolynomialFeatures`** com grau 2.
+* **Treinamento:** O modelo foi treinado em um conjunto de dados separado (80% treino, 20% teste).
+* **Visualização:** O gráfico de dispersão dos dados reais foi plotado, juntamente com a linha do Ajuste Polinomial.
 
 ---
 
 ## ✨ Insights Chave (Valor de Negócio e Conclusão)
 
-O exercício demonstrou a proficiência em **SQL** como ferramenta essencial de Engenharia de Dados, comprovando a capacidade de:
+O exercício demonstrou a proficiência na aplicação de **Regressão Polinomial**, comprovando a capacidade de:
 
-* **Transformação de Dados:** Transformar dados brutos em uma base única, acionável e pronta para o consumo.
-* **Tomada de Decisão:** Criar métricas de negócio prontas para a tomada de decisões no contexto de E-commerce.
-* **Preparação para BI:** O resultado é uma base de dados limpa e estruturada, que agiliza o processo de carregamento e a criação de relatórios em qualquer ferramenta de BI.
+* **Capturar Relações Complexas:** Utilizar a regressão polinomial para modelar relações não lineares entre a `Metragem` e o `Valor_Aluguel`.
+* **Avaliação Preditiva:** A performance do modelo (com $R^2$ de **0.5423** no conjunto de teste) fornece uma base sólida para a previsibilidade do valor de aluguel.
+* **Escolha de Variável:** A seleção da `Metragem` como variável preditora principal reforça a intuição de que o tamanho do imóvel é um dos fatores mais críticos.
